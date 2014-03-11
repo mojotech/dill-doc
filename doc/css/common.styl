@@ -1,0 +1,23 @@
+green = #4abb81
+green-darken-amount = 50%
+spacing-block = 20px
+
+frame, frameset
+  border none
+
+a:link, a:visited
+  color darken(green, green-darken-amount)
+
+#content-list 
+  background-color lighten(green, 70%)
+
+#full_list
+  li
+    background-color lighten(green, 70%)
+    color lighten(green, 20%)
+    padding-left spacing-block !imporant
+    text-transform uppercase
+    font-size 12px
+
+    .object_link
+      color darken(green, green-darken-amount)

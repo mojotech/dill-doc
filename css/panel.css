@@ -1,0 +1,384 @@
+@font-face {
+  font-family: 'clear_sansregular';
+  src: url("../fonts/clearsans/regular/ClearSans-Regular-webfont.eot");
+  src: url("../fonts/clearsans/regular/ClearSans-Regular-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/clearsans/regular/ClearSans-Regular-webfont.woff") format('woff'), url("../fonts/clearsans/regular/ClearSans-Regular-webfont.ttf") format('truetype'), url("../fonts/clearsans/regular/ClearSans-Regular-webfont.svg#clear_sansregular") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'clear_sansbold';
+  src: url("../fonts/clearsans/bold/ClearSans-Bold-webfont.eot");
+  src: url("../fonts/clearsans/bold/ClearSans-Bold-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/clearsans/bold/ClearSans-Bold-webfont.woff") format('woff'), url("../fonts/clearsans/bold/ClearSans-Bold-webfont.ttf") format('truetype'), url("../fonts/clearsans/bold/ClearSans-Bold-webfont.svg#clear_sansregular") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'clear_sanslight';
+  src: url("../fonts/clearsans/light/ClearSans-Light-webfont.eot");
+  src: url("../fonts/clearsans/light/ClearSans-Light-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/clearsans/light/ClearSans-Light-webfont.woff") format('woff'), url("../fonts/clearsans/light/ClearSans-Light-webfont.ttf") format('truetype'), url("../fonts/clearsans/light/ClearSans-Light-webfont.svg#clear_sansregular") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Panel (begin) */
+.panel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 2;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  zoom: 1;
+}
+.panel_tree .results,
+.panel_results .tree {
+  display: none;
+}
+/* Header with search box (begin) */
+.panel .header {
+  width: 100%;
+  height: 29px;
+  border-bottom: 1px solid #666;
+  position: relative;
+  left: 0;
+  top: 0;
+  background: #e8e8e8;
+}
+.panel .header div {
+  margin: 0 7px;
+}
+.panel .header table {
+  height: 29px;
+  width: 100%;
+}
+.panel .header table td {
+  vertical-align: middle;
+  text-align: middle;
+}
+.panel .header label {
+  position: absolute;
+  font-size: 12px;
+  line-height: 29px;
+  margin-left: 3px;
+  color: #999;
+  cursor: text;
+}
+.panel .header table input {
+  width: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  display: inline-block;
+  -webkit-appearance: searchfield;
+  height: 22px;
+  height: auto;
+}
+/* Header with search box (end) */
+/* Results (begin) */
+.panel .result {
+  position: absolute;
+  top: 30px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -overflow-y: hidden;
+  background: #edf3fe url("../i/results_bg.png");
+  z-index: 2;
+  zoom: 1;
+}
+.panel .result ul {
+  font-size: 0.8em;
+  width: 100%;
+  background: #edf3fe url("../i/results_bg.png");
+  zoom: 1;
+}
+.panel .result ul li {
+  height: 46px;
+  -height: 50px;
+  display: inline;
+  width: 100%;
+  zoom: 1;
+  overflow: hidden;
+  padding: 4px 10px 0;
+  cursor: pointer;
+}
+.panel .result ul li h1 {
+  font-size: 13px;
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 2px;
+  white-space: nowrap;
+}
+.panel .result ul li p {
+  font-size: 11px;
+  color: #333;
+  margin-bottom: 2px;
+  white-space: nowrap;
+}
+.panel .result ul li h1 i,
+.panel .result ul li p.snippet {
+  color: #999;
+}
+.panel .result ul li b {
+  color: #000;
+}
+.panel .result ul li.current {
+  background: #3875d7;
+}
+.panel .result ul li.current h1,
+.panel .result ul li.current p {
+  color: #ddd;
+}
+.panel .result ul li.current h1 i,
+.panel .result ul li.current p.snippet {
+  color: #aaa;
+}
+.panel .result ul li.current b {
+  color: #fff;
+}
+.panel .result ul li:hover,
+.panel .result ul li.selected {
+  background: #d0d0d0;
+}
+.panel .result ul li.current:hover {
+  background: #2965c0;
+}
+.panel .result ul li .badge {
+  margin-right: 0.4em;
+  margin-left: -0.2em;
+  padding: 0 0.2em;
+  color: #000;
+  border-radius: 3px;
+}
+.panel .result ul li .badge_1 {
+  background: #acdbf4;
+}
+.panel .result ul li.current .badge_1 {
+  background: #97bfd7;
+}
+.panel .result ul li .badge_2 {
+  background: #acf3c3;
+}
+.panel .result ul li.current .badge_2 {
+  background: #98d7ac;
+}
+.panel .result ul li .badge_3 {
+  background: #e0f3ac;
+}
+.panel .result ul li.current .badge_3 {
+  background: #c4d798;
+}
+.panel .result ul li .badge_4 {
+  background: #d7ca98;
+}
+.panel .result ul li.current .badge_4 {
+  background: #a6b0ac;
+}
+.panel .result ul li .badge_5 {
+  background: #f3c8ac;
+}
+.panel .result ul li.current .badge_5 {
+  background: #d7b198;
+}
+.panel .result ul li .badge_6 {
+  background: #f3acc3;
+}
+.panel .result ul li.current .badge_6 {
+  background: #d798ab;
+}
+/* Results (end) */
+/* Tree (begin) */
+/**/
+.panel .tree {
+  position: absolute;
+  top: 30px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  zoom: 1;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -overflow-y: hidden;
+  background: #edf3fe url("../i/tree_bg.png");
+  z-index: 30;
+}
+.panel .tree ul {
+  background: #edf3fe url("../i/tree_bg.png");
+}
+.panel .tree li {
+  cursor: pointer;
+  overflow: hidden;
+  height: 23px;
+  display: inline;
+  zoom: 1;
+  width: 100%;
+}
+.panel .tree li .content {
+  padding-left: 18px;
+  padding-top: 5px;
+  height: 18px;
+  overflow: hidden;
+  position: relative;
+}
+.panel .tree li .icon {
+  width: 10px;
+  height: 9px;
+  background: url("../i/arrows.png");
+  background-position: 0 -9px;
+  position: absolute;
+  left: 1px;
+  top: 8px;
+  cursor: default;
+}
+.panel .tree li.closed .icon {
+  background-position: 0 0;
+}
+.panel .tree ul li h1 {
+  font-size: 13px;
+  font-weight: 400;
+  color: #000;
+  margin-bottom: 2px;
+  white-space: nowrap;
+}
+.panel .tree ul li p {
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 2px;
+  white-space: nowrap;
+}
+.panel .tree ul li h1 i {
+  color: #999;
+  font-style: normal;
+}
+.panel .tree ul li.empty {
+  cursor: text;
+}
+.panel .tree ul li.empty h1,
+.panel .tree ul li.empty p {
+  color: #666;
+  font-style: italic;
+}
+.panel .tree ul li.current {
+  background: #3875d7;
+}
+.panel .tree ul li.current .icon {
+  background-position: -10px -9px;
+}
+.panel .tree ul li.current.closed .icon {
+  background-position: -10px 0;
+}
+.panel .tree ul li.current h1 {
+  color: #fff;
+}
+.panel .tree ul li.current p {
+  color: #ccc;
+}
+.panel .tree ul li.current.empty h1,
+.panel .tree ul li.current.empty p {
+  color: #999;
+}
+.panel .tree ul li:hover {
+  background: #d0d0d0;
+}
+.panel .tree ul li.current:hover {
+  background: #2965c0;
+}
+.panel .tree .stopper {
+  display: none;
+}
+/* Tree (end) */
+/**/
+/* Panel (end) */
+@font-face {
+  font-family: 'clear_sansregular';
+  src: url("../fonts/clearsans/regular/ClearSans-Regular-webfont.eot");
+  src: url("../fonts/clearsans/regular/ClearSans-Regular-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/clearsans/regular/ClearSans-Regular-webfont.woff") format('woff'), url("../fonts/clearsans/regular/ClearSans-Regular-webfont.ttf") format('truetype'), url("../fonts/clearsans/regular/ClearSans-Regular-webfont.svg#clear_sansregular") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'clear_sansbold';
+  src: url("../fonts/clearsans/bold/ClearSans-Bold-webfont.eot");
+  src: url("../fonts/clearsans/bold/ClearSans-Bold-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/clearsans/bold/ClearSans-Bold-webfont.woff") format('woff'), url("../fonts/clearsans/bold/ClearSans-Bold-webfont.ttf") format('truetype'), url("../fonts/clearsans/bold/ClearSans-Bold-webfont.svg#clear_sansregular") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'clear_sanslight';
+  src: url("../fonts/clearsans/light/ClearSans-Light-webfont.eot");
+  src: url("../fonts/clearsans/light/ClearSans-Light-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/clearsans/light/ClearSans-Light-webfont.woff") format('woff'), url("../fonts/clearsans/light/ClearSans-Light-webfont.ttf") format('truetype'), url("../fonts/clearsans/light/ClearSans-Light-webfont.svg#clear_sansregular") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.panel .tree,
+.panel .tree ul {
+  background-image: none;
+  background-color: #232b34;
+}
+.panel .tree ul li:hover {
+  background-color: #4abb81;
+}
+.panel .tree ul li:hover h1 {
+  color: #fff;
+}
+.panel .tree ul li:hover i {
+  color: #245f40;
+}
+.panel .tree ul li h1 i {
+  color: #566a80;
+}
+.panel .tree ul li.current {
+  background-color: #4abb81;
+}
+.panel .tree ul li.current:hover {
+  background: #4abb81;
+}
+.panel .tree li {
+  display: block;
+  padding: 8px 0;
+  height: auto;
+}
+.panel .tree ul li.current h1 {
+  background-color: #4abb81;
+  color: #fff;
+}
+.panel .tree ul li h1 {
+  margin-bottom: 0;
+  color: #4abb81;
+}
+.panel .tree li .content {
+  padding-top: 0;
+  height: auto;
+}
+.panel .header {
+  background-color: #20272f;
+  border: none;
+  padding: 12px 0;
+  height: 46px;
+}
+.panel .header table input {
+  -webkit-appearance: none;
+  padding: 10px 0 10px 20px;
+  border: none;
+  background-color: #34404d;
+  border-radius: 18px;
+}
+.panel .header table input pading,
+.panel .header table input:focus {
+  outline: none;
+}
+.panel .result,
+.panel .tree {
+  top: 70px;
+}
+p,
+ul li,
+blockquote {
+  font-family: 'clear_sansregular';
+  font-size: 14px;
+  color: #455567;
+  line-height: 20px;
+}

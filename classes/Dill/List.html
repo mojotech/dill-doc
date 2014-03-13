@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Dill::List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Dill::List 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Widget.html">Widget</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/dill/widgets/list_rb.html">lib/dill/widgets/list.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>Use a <a href="List.html">List</a> when you want to treat repeating
+elements as a unit.</p>
+
+<h3 id="class-Dill::List-label-Usage">Usage</h3>
+
+<p>Consider the following HTML:</p>
+
+<pre><code>&lt;ul id=&quot;colors&quot;&gt;
+  &lt;li&gt;Red &lt;span class=&quot;pt&quot;&gt;Vermelho&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;Green &lt;span class=&quot;pt&quot;&gt;Verde&lt;/span&gt;&lt;/li&gt;
+  &lt;li&gt;Blue &lt;span class=&quot;pt&quot;&gt;Azul&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+<p>You can then define the following widget:</p>
+
+<pre><code>class Colors &lt; Dill::List
+  root '#colors'
+  item 'li'
+end
+</code></pre>
+
+<p>Now you’ll be able to iterate over each item:</p>
+
+<pre><code># prints:
+# Red Vermelho
+# Green Verde
+# Blue Azul
+widget(:colors).each do |e|
+  puts e
+end
+</code></pre>
+
+<p>This is the same as doing the following in Capybara:</p>
+
+<pre><code>all('#colors li').each do |e|
+  puts e.text.strip
+end
+</code></pre>
+
+<p>Not that, by default, the root selector of a <a href="List.html">List</a>
+is <code>ul</code> and the list item selector is <code>li</code>. So you
+could wrap the +&lt;ul&gt;+ above simply by using the following:</p>
+
+<pre><code>class Colors &lt; Dill::List
+end
+</code></pre>
+
+<h4 id="class-Dill::List-label-Narrowing+items">Narrowing items</h4>
+
+<p>You can define the root selector for your list items using the ::item
+macro:</p>
+
+<pre><code>class PortugueseColors &lt; Dill::List
+  root '#colors
+  item '.pt'
+end
+</code></pre>
+
+<p>If you iterate over this list you get the following:</p>
+
+<pre><code># prints:
+# Vermelho
+# Verde
+# Azul
+widget(:portuguese_colors).each do |e|
+  puts e
+end
+</code></pre>
+
+<p>You can make a list out of any repeating elements, as long as you can
+define parent and child selectors.</p>
+
+<pre><code>&lt;div id=&quot;not-a-list-colors&quot;&gt;
+  &lt;div class=&quot;.child&quot;&gt;Red&lt;/div&gt;
+  &lt;div class=&quot;.child&quot;&gt;Green&lt;/div&gt;
+  &lt;div class=&quot;.child&quot;&gt;Blue&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+<p>You can define the following widget:</p>
+
+<pre><code>class NotAListColors &lt; Dill::List
+  root '#not-a-list-colors'
+  item '.child'
+end
+</code></pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-count">count</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-empty-3F">empty?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-exclude-3F">exclude?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-include-3F">include?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-item">item</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-item_factory">item_factory</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-item_for">item_for</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-item_selector">item_selector</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-items">items</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-length">length</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-selector">selector</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-size">size</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_row">to_row</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_table">to_table</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>V</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-value">value</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            Enumerable
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [W]
+            </td>
+            <td class='attr-name'>item_factory</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-count">
+            
+              <b>count</b>()
+            
+            <a href="../../classes/Dill/List.html#method-i-count" name="method-i-count" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-count_source')" id="l_method-i-count_source">show</a>
+                
+              </p>
+              <div id="method-i-count_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/list.rb, line 155</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">count</span>
+  <span class="ruby-identifier">items</span>.<span class="ruby-identifier">count</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-empty-3F">
+            
+              <b>empty?</b>()
+            
+            <a href="../../classes/Dill/List.html#method-i-empty-3F" name="method-i-empty-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>TODO: Convert value to primitive data structures.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-empty-3F_source')" id="l_method-i-empty-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-empty-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/list.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">empty?</span>
+  <span class="ruby-identifier">items</span>.<span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-exclude-3F">
+            
+              <b>exclude?</b>(element)
+            
+            <a href="../../classes/Dill/List.html#method-i-exclude-3F" name="method-i-exclude-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-exclude-3F_source')" id="l_method-i-exclude-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-exclude-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/list.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">exclude?</span>(<span class="ruby-identifier">element</span>)
+  <span class="ruby-operator">!</span> <span class="ruby-identifier">include?</span>(<span class="ruby-identifier">element</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-include-3F">
+            
+              <b>include?</b>(element)
+            
+            <a href="../../classes/Dill/List.html#method-i-include-3F" name="method-i-include-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-include-3F_source')" id="l_method-i-include-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-include-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/list.rb, line 168</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">include?</span>(<span class="ruby-identifier">element</span>)
+  <span class="ruby-identifier">value</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">element</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-item">
+            
+              <b>item</b>(selector, type = ListItem, &amp;block)
+            
+            <a href="../../classes/Dill/List.html#method-i-item" name="method-i-item" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Configures the <a href="List.html">List</a> item selector and class.</p>
+
+<h3 id="method-i-item-label-Usage">Usage</h3>
+
+<p>Given the following HTML:</p>
+
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;One&lt;/li&gt;
+  &lt;li&gt;Two&lt;/li&gt;
+  &lt;li&gt;Three&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+<p>In its most basic form, allows you to configure the list item selector,
+using the default list item class (Dill::ListItem):</p>
+
+<pre><code>class Numbers &lt; Dill::List
+  root 'ul'
+  item 'li'
+end
+</code></pre>
+
+<h4 id="method-i-item-label-Extending+the+list+item+class">Extending the list item class</h4>
+
+<p>You can define the list item class for the current List:</p>
+
+<pre><code>class Number &lt; Dill::Widget
+  # ...
+end
+
+class Numbers &lt; Dill::List
+  root 'ul'
+  item 'li', Number
+end
+
+widget(:numbers).first.class &lt; Number #=&gt; true
+</code></pre>
+
+<p>Alternatively, you can extend the list item type inline. This is useful
+when you want to add small extensions to the default list item class. The
+extensions will apply only to list items of the current <a
+href="List.html">List</a>.</p>
+
+<pre><code>class Numbers &lt; Dill::List
+  root 'ul'
+
+  item 'li' do
+    def upcase
+      text.upcase
+    end
+  end
+
+  widget(:numbers).first.upcase #=&gt; &quot;ONE&quot;
+end
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-item_source')" id="l_method-i-item_source">show</a>
+                
+              </p>
+              <div id="method-i-item_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/list.rb, line 134</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">item</span>(<span class="ruby-identifier">selector</span>, <span class="ruby-identifier">type</span> = <span class="ruby-constant">ListItem</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">item_factory</span> = <span class="ruby-constant">WidgetClass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">selector</span>, <span class="ruby-identifier">type</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-item_factory">
+            
+              <b>item_factory</b>()
+            
+            <a href="../../classes/Dill/List.html#method-i-item_factory" name="method-i-item_factory" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-item_factory_source')" id="l_method-i-item_factory_source">show</a>
+                
+              </p>
+              <div id="method-i-item_factory_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/list.rb, line 140</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">item_factory</span>
+  <span class="ruby-ivar">@item_factory</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">WidgetClass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'li'</span>, <span class="ruby-constant">ListItem</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-length">
+            
+              <b>length</b>()
+            
+            <a href="../../classes/Dill/List.html#method-i-length" name="method-i-length" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-length_source')" id="l_method-i-length_source">show</a>
+                
+              </p>
+              <div id="method-i-length_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/list.rb, line 172</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">length</span>
+  <span class="ruby-identifier">items</span>.<span class="ruby-identifier">length</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-selector">
+            
+              <b>selector</b>()
+            
+            <a href="../../classes/Dill/List.html#method-i-selector" name="method-i-selector" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-selector_source')" id="l_method-i-selector_source">show</a>
+                
+              </p>
+              <div id="method-i-selector_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/list.rb, line 144</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">selector</span>
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-keyword">super</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Widget</span><span class="ruby-operator">::</span><span class="ruby-constant">MissingSelector</span>
+    <span class="ruby-identifier">root</span> <span class="ruby-string">'ul'</span>
+
+    <span class="ruby-keyword">super</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-size">
+            
+              <b>size</b>()
+            
+            <a href="../../classes/Dill/List.html#method-i-size" name="method-i-size" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-size_source')" id="l_method-i-size_source">show</a>
+                
+              </p>
+              <div id="method-i-size_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/list.rb, line 176</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">size</span>
+  <span class="ruby-identifier">items</span>.<span class="ruby-identifier">size</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_row">
+            
+              <b>to_row</b>()
+            
+            <a href="../../classes/Dill/List.html#method-i-to_row" name="method-i-to_row" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_row_source')" id="l_method-i-to_row_source">show</a>
+                
+              </p>
+              <div id="method-i-to_row_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/list.rb, line 180</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_row</span>
+  <span class="ruby-identifier">items</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:to_cell</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_table">
+            
+              <b>to_table</b>()
+            
+            <a href="../../classes/Dill/List.html#method-i-to_table" name="method-i-to_table" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_table_source')" id="l_method-i-to_table_source">show</a>
+                
+              </p>
+              <div id="method-i-to_table_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/list.rb, line 184</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_table</span>
+  <span class="ruby-identifier">items</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:to_row</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-value">
+            
+              <b>value</b>()
+            
+            <a href="../../classes/Dill/List.html#method-i-value" name="method-i-value" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-value_source')" id="l_method-i-value_source">show</a>
+                
+              </p>
+              <div id="method-i-value_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/list.rb, line 188</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">value</span>
+  <span class="ruby-identifier">items</span>.<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:value</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+              
+      <div class="sectiontitle">Instance Protected methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-item_for">
+            
+              <b>item_for</b>(node)
+            
+            <a href="../../classes/Dill/List.html#method-i-item_for" name="method-i-item_for" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-item_for_source')" id="l_method-i-item_for_source">show</a>
+                
+              </p>
+              <div id="method-i-item_for_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/list.rb, line 196</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">item_for</span>(<span class="ruby-identifier">node</span>)
+  <span class="ruby-identifier">item_factory</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">node</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-item_selector">
+            
+              <b>item_selector</b>()
+            
+            <a href="../../classes/Dill/List.html#method-i-item_selector" name="method-i-item_selector" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-item_selector_source')" id="l_method-i-item_selector_source">show</a>
+                
+              </p>
+              <div id="method-i-item_selector_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/list.rb, line 200</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">item_selector</span>
+  <span class="ruby-identifier">item_factory</span>.<span class="ruby-identifier">selector</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-items">
+            
+              <b>items</b>()
+            
+            <a href="../../classes/Dill/List.html#method-i-items" name="method-i-items" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-items_source')" id="l_method-i-items_source">show</a>
+                
+              </p>
+              <div id="method-i-items_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/list.rb, line 204</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">items</span>
+  <span class="ruby-identifier">root</span>.<span class="ruby-identifier">all</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">item_selector</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">item_for</span>(<span class="ruby-identifier">node</span>) }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

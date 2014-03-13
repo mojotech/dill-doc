@@ -1,0 +1,79 @@
+@import '_base.styl'
+
+frame, frameset
+  border none
+
+a:link, a:visited
+  color green
+  &:hover
+    background-color lighten(green, 92%)
+
+
+h1, h2, h3, h4, .sectiontitle
+  font-family 'clear_sanslight'
+  color dark-blue
+
+.sectiontitle, td, th
+  font-family 'clear_sansregular'
+  font-weight normal
+
+.sectiontitle
+  border-bottom 1px solid rgba(0, 0, 0, 0.09)
+
+h1,
+.banner h1
+  font-size 30px
+
+p, ul li, blockquote
+  font-family 'clear_sansregular'
+  font-size 14px
+  color lighten(dark-blue, 20%)
+  line-height 20px
+
+  code
+    color lighten(dark-blue, 50%)
+
+pre,
+.description pre,
+.dyn-source
+  background-color lighten(dark-blue, 95%)
+  border none
+  border-radius 3px
+
+pre code
+  background-color lighten(dark-blue, 95%) !important
+  color lighten(dark-blue, 48%) !important
+  font-size 14px
+  line-height 16px
+
+.banner
+  background-color #F7F7F7
+  padding-top 50px
+  h1 .type
+    text-transform uppercase
+    font-size 14px
+  h1 .parent
+    span
+      color lighten(dark-blue, 50%)
+
+// Syntax highlighting
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula
+  color #fa4e4e !important
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .lisp .title,
+pre .subst
+  color dark-blue !important
+
+pre .title, pre .id
+  color #8e92bc !important
+
+pre .comment, pre .template_comment, pre .diff .header, pre .javadoc
+  color #B1B3B9 !important

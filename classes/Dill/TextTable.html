@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Dill::TextTable</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Dill::TextTable 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/dill/text_table_rb.html">lib/dill/text_table.rb</a></li>
+            
+            <li><a href="../../files/lib/dill/text_table/cell_text_rb.html">lib/dill/text_table/cell_text.rb</a></li>
+            
+            <li><a href="../../files/lib/dill/text_table/mapping_rb.html">lib/dill/text_table/mapping.rb</a></li>
+            
+            <li><a href="../../files/lib/dill/text_table/transformations_rb.html">lib/dill/text_table/transformations.rb</a></li>
+            
+            <li><a href="../../files/lib/dill/text_table/void_mapping_rb.html">lib/dill/text_table/void_mapping.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="TextTable/Transformations.html">Dill::TextTable::Transformations</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="TextTable/CellText.html">Dill::TextTable::CellText</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="TextTable/Mapping.html">Dill::TextTable::Mapping</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="TextTable/VoidMapping.html">Dill::TextTable::VoidMapping</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-Array">Array</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>H</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-Hash">Hash</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-each">each</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-map">map</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-mappings">mappings</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-rows">rows</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-single_row">single_row</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-skip">skip</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_a">to_a</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_h">to_h</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            Enumerable
+          
+        </li>
+      
+        <li>
+          
+            <a href="Conversions.html">
+              Dill::Conversions
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(table)
+            
+            <a href="../../classes/Dill/TextTable.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/text_table.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">table</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">table</span> = <span class="ruby-identifier">table</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-Array">
+            
+              <b>Array</b>(table)
+            
+            <a href="../../classes/Dill/TextTable.html#method-i-Array" name="method-i-Array" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-Array_source')" id="l_method-i-Array_source">show</a>
+                
+              </p>
+              <div id="method-i-Array_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/text_table.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">Array</span>(<span class="ruby-identifier">table</span>)
+  <span class="ruby-identifier">new</span>(<span class="ruby-identifier">table</span>).<span class="ruby-identifier">to_a</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-Hash">
+            
+              <b>Hash</b>(table)
+            
+            <a href="../../classes/Dill/TextTable.html#method-i-Hash" name="method-i-Hash" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-Hash_source')" id="l_method-i-Hash_source">show</a>
+                
+              </p>
+              <div id="method-i-Hash_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/text_table.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">Hash</span>(<span class="ruby-identifier">table</span>)
+  <span class="ruby-identifier">new</span>(<span class="ruby-identifier">table</span>).<span class="ruby-identifier">to_h</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-each">
+            
+              <b>each</b>(&amp;block)
+            
+            <a href="../../classes/Dill/TextTable.html#method-i-each" name="method-i-each" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-each_source')" id="l_method-i-each_source">show</a>
+                
+              </p>
+              <div id="method-i-each_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/text_table.rb, line 78</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-map">
+            
+              <b>map</b>(name, options = {}, &amp;block)
+            
+            <a href="../../classes/Dill/TextTable.html#method-i-map" name="method-i-map" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-map_source')" id="l_method-i-map_source">show</a>
+                
+              </p>
+              <div id="method-i-map_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/text_table.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">map</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">name</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:*</span>
+    <span class="ruby-identifier">set_default_mapping</span> <span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">set_mapping</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-mappings">
+            
+              <b>mappings</b>()
+            
+            <a href="../../classes/Dill/TextTable.html#method-i-mappings" name="method-i-mappings" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-mappings_source')" id="l_method-i-mappings_source">show</a>
+                
+              </p>
+              <div id="method-i-mappings_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/text_table.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">mappings</span>
+  <span class="ruby-ivar">@mappings</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Hash</span>.
+   <span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span>, <span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-constant">Mapping</span>.<span class="ruby-identifier">new</span> }.
+   <span class="ruby-identifier">merge</span>(<span class="ruby-identifier">with_parent_mappings</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-rows">
+            
+              <b>rows</b>()
+            
+            <a href="../../classes/Dill/TextTable.html#method-i-rows" name="method-i-rows" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+            <div class="aka">
+              Also aliased as: <a href="TextTable.html#method-i-to_a">to_a</a>
+            </div>
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-rows_source')" id="l_method-i-rows_source">show</a>
+                
+              </p>
+              <div id="method-i-rows_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/text_table.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">rows</span>
+  <span class="ruby-ivar">@rows</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">table</span>.<span class="ruby-identifier">hashes</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span><span class="ruby-operator">|</span> <span class="ruby-identifier">new_row</span>(<span class="ruby-identifier">h</span>) }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-single_row">
+            
+              <b>single_row</b>()
+            
+            <a href="../../classes/Dill/TextTable.html#method-i-single_row" name="method-i-single_row" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+            <div class="aka">
+              Also aliased as: <a href="TextTable.html#method-i-to_h">to_h</a>
+            </div>
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-single_row_source')" id="l_method-i-single_row_source">show</a>
+                
+              </p>
+              <div id="method-i-single_row_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/text_table.rb, line 86</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">single_row</span>
+  <span class="ruby-ivar">@single_row</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">new_row</span>(<span class="ruby-identifier">table</span>.<span class="ruby-identifier">rows_hash</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-skip">
+            
+              <b>skip</b>(name)
+            
+            <a href="../../classes/Dill/TextTable.html#method-i-skip" name="method-i-skip" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-skip_source')" id="l_method-i-skip_source">show</a>
+                
+              </p>
+              <div id="method-i-skip_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/text_table.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">skip</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">name</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:*</span>
+    <span class="ruby-identifier">set_default_mapping</span> <span class="ruby-constant">VoidMapping</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;can't convert #{name.inspect} to name&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_a">
+            
+              <b>to_a</b>()
+            
+            <a href="../../classes/Dill/TextTable.html#method-i-to_a" name="method-i-to_a" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+            <div class="aka">
+              Alias for: <a href="TextTable.html#method-i-rows">rows</a>
+            </div>
+          
+          
+          
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_h">
+            
+              <b>to_h</b>()
+            
+            <a href="../../classes/Dill/TextTable.html#method-i-to_h" name="method-i-to_h" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+            <div class="aka">
+              Alias for: <a href="TextTable.html#method-i-single_row">single_row</a>
+            </div>
+          
+          
+          
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

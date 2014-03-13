@@ -25,18 +25,32 @@ frameset {
 }
 a:link,
 a:visited {
-  color: #245f40;
+  color: #4abb81;
 }
-#content-list {
-  background-color: #c9ebd9;
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'clear_sanslight';
+  color: #232b34;
 }
-#full_list li {
-  background-color: #c9ebd9;
-  color: #6ec99a;
-  padding-left: 20px false;
-  text-transform: uppercase;
-  font-size: 12px;
+h1,
+.banner h1 {
+  font-size: 30px;
 }
-#full_list li .object_link {
-  color: #245f40;
+p,
+ul li,
+blockquote {
+  font-family: 'clear_sansregular';
+  font-size: 14px;
+  color: #455567;
+  line-height: 20px;
+}
+pre,
+.description pre {
+  background-color: #fbfefc;
+  border: 1px solid #4abb81;
+}
+pre code {
+  background-color: #fbfefc !important;
 }

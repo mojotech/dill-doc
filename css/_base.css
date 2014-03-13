@@ -19,24 +19,3 @@
   font-weight: normal;
   font-style: normal;
 }
-frame,
-frameset {
-  border: none;
-}
-a:link,
-a:visited {
-  color: #245f40;
-}
-#content-list {
-  background-color: #c9ebd9;
-}
-#full_list li {
-  background-color: #c9ebd9;
-  color: #6ec99a;
-  padding-left: 20px false;
-  text-transform: uppercase;
-  font-size: 12px;
-}
-#full_list li .object_link {
-  color: #245f40;
-}

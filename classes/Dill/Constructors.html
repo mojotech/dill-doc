@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Dill::Constructors</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            Dill::Constructors 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/dill/widgets_rb.html">lib/dill/widgets.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-Decimal">Decimal</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-Integer">Integer</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-String">String</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>W</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-Widget">Widget</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>V</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-value">value</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-Decimal">
+            
+              <b>Decimal</b>(*selector)
+            
+            <a href="../../classes/Dill/Constructors.html#method-i-Decimal" name="method-i-Decimal" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-Decimal_source')" id="l_method-i-Decimal_source">show</a>
+                
+              </p>
+              <div id="method-i-Decimal_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">Decimal</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">selector</span>)
+  <span class="ruby-constant">Widget</span>(<span class="ruby-identifier">selector</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">value</span>
+      <span class="ruby-comment"># ensure we can convert to float first</span>
+      <span class="ruby-constant">Float</span>(<span class="ruby-identifier">text</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">BigDecimal</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">text</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-Integer">
+            
+              <b>Integer</b>(*selector)
+            
+            <a href="../../classes/Dill/Constructors.html#method-i-Integer" name="method-i-Integer" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-Integer_source')" id="l_method-i-Integer_source">show</a>
+                
+              </p>
+              <div id="method-i-Integer_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">Integer</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">selector</span>)
+  <span class="ruby-constant">Widget</span>(<span class="ruby-identifier">selector</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">value</span>
+      <span class="ruby-constant">Integer</span>(<span class="ruby-identifier">text</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-String">
+            
+              <b>String</b>(*selector, &amp;block)
+            
+            <a href="../../classes/Dill/Constructors.html#method-i-String" name="method-i-String" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+            <div class="aka">
+              Alias for: <a href="Constructors.html#method-i-Widget">Widget</a>
+            </div>
+          
+          
+          
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-Widget">
+            
+              <b>Widget</b>(*selector, &amp;block)
+            
+            <a href="../../classes/Dill/Constructors.html#method-i-Widget" name="method-i-Widget" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+            <div class="aka">
+              Also aliased as: <a href="Constructors.html#method-i-String">String</a>
+            </div>
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-Widget_source')" id="l_method-i-Widget_source">show</a>
+                
+              </p>
+              <div id="method-i-Widget_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">Widget</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">selector</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-constant">WidgetClass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">selector</span>.<span class="ruby-identifier">flatten</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-value">
+            
+              <b>value</b>()
+            
+            <a href="../../classes/Dill/Constructors.html#method-i-value" name="method-i-value" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-value_source')" id="l_method-i-value_source">show</a>
+                
+              </p>
+              <div id="method-i-value_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">value</span>
+  <span class="ruby-constant">Integer</span>(<span class="ruby-identifier">text</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

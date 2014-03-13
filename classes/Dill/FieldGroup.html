@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Dill::FieldGroup</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Dill::FieldGroup 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Widget.html">Widget</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/dill/widgets/field_group_rb.html">lib/dill/widgets/field_group.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>A group of form fields.</p>
+
+<p>@todo Explain how to use locators when defining fields, including what</p>
+
+<pre><code>happens when locators are omitted.</code></pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-check_box">check_box</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-default_locator">default_locator</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-field">field</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-field_names">field_names</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-fields">fields</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-select">select</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-set">set</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-text_field">text_field</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_table">to_table</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-check_box">
+            
+              <b>check_box</b>(name, locator = nil)
+            
+            <a href="../../classes/Dill/FieldGroup.html#method-c-check_box" name="method-c-check_box" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Creates a new checkbox accessor.</p>
+
+<p>Adds the following methods to the widget:</p>
+<dl class="rdoc-list note-list"><dt>&lt;name&gt;
+<dd>
+<p>Gets the current checkbox state, as a boolean. Returns <code>true</code> if
+the corresponding check box is checked, <code>false</code> otherwise.</p>
+</dd><dt>&lt;name&gt;=
+<dd>
+<p>Sets the current checkbox state. Pass <code>true</code> to check the
+checkbox, <code>false</code> otherwise.</p>
+</dd></dl>
+
+<p>@example</p>
+
+<pre><code># Given the following HTML:
+#
+# &lt;form&gt;
+#   &lt;p&gt;
+#     &lt;label for=&quot;checked-box&quot;&gt;
+#     &lt;input type=&quot;checkbox&quot; value=&quot;1&quot; id=&quot;checked-box&quot; checked&gt;
+#   &lt;/p&gt;
+#   &lt;p&gt;
+#     &lt;label for=&quot;unchecked-box&quot;&gt;
+#     &lt;input type=&quot;checkbox&quot; value=&quot;1&quot; id=&quot;unchecked-box&quot;&gt;
+#   &lt;/p&gt;
+# &lt;/form&gt;
+class MyFieldGroup &lt; Dill::FieldGroup
+  root 'form'
+
+  check_box :checked_box, 'checked-box'
+  check_box :unchecked_box, 'unchecked-box'
+end
+
+form = widget(:my_field_group)
+
+form.checked_box          #=&gt; true
+form.unchecked_box        #=&gt; false
+
+form.unchecked_box = true
+form.unchecked_box        #=&gt; true
+</code></pre>
+
+<p>@param name the name of the checkbox accessor. @param locator the locator
+for the checkbox. If <code>nil</code> the locator will</p>
+
+<pre><code>be derived from +name+.</code></pre>
+
+<p>@todo Handle checkbox access when the field is disabled (raise an</p>
+
+<pre><code>exception?)</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-check_box_source')" id="l_method-c-check_box_source">show</a>
+                
+              </p>
+              <div id="method-c-check_box_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/field_group.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">check_box</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">locator</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">field</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">locator</span>, <span class="ruby-constant">CheckBox</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-default_locator">
+            
+              <b>default_locator</b>(type = nil, &amp;block)
+            
+            <a href="../../classes/Dill/FieldGroup.html#method-c-default_locator" name="method-c-default_locator" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-default_locator_source')" id="l_method-c-default_locator_source">show</a>
+                
+              </p>
+              <div id="method-c-default_locator_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/field_group.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">default_locator</span>(<span class="ruby-identifier">type</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:name_to_locator</span>, <span class="ruby-identifier">type</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">type</span>
+
+  <span class="ruby-identifier">define_method</span> <span class="ruby-value">:name_to_locator</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-field">
+            
+              <b>field</b>(name, locator, type)
+            
+            <a href="../../classes/Dill/FieldGroup.html#method-c-field" name="method-c-field" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Defines a new field.</p>
+
+<p>@param name the name of the field accessor. @param locator the field
+locator. @param type the field class name.</p>
+
+<p>@api private</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-field_source')" id="l_method-c-field_source">show</a>
+                
+              </p>
+              <div id="method-c-field_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/field_group.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">field</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">type</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;can't convert `#{name}' to Symbol&quot;</span>          <span class="ruby-keyword">unless</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:to_sym</span>)
+
+  <span class="ruby-identifier">field_names</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>
+
+  <span class="ruby-identifier">label</span>     = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/_/</span>, <span class="ruby-string">' '</span>).<span class="ruby-identifier">capitalize</span>
+  <span class="ruby-identifier">locator</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">label</span>
+
+  <span class="ruby-identifier">widget</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">locator</span>, <span class="ruby-identifier">type</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">define_method</span> <span class="ruby-value">:label</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">label</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">define_method</span> <span class="ruby-node">&quot;#{name}=&quot;</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">widget</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">set</span> <span class="ruby-identifier">val</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">define_method</span> <span class="ruby-identifier">name</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">widget</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">get</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-field_names">
+            
+              <b>field_names</b>()
+            
+            <a href="../../classes/Dill/FieldGroup.html#method-c-field_names" name="method-c-field_names" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>The names of all the fields that belong to this field group.</p>
+
+<p><a href="Field.html">Field</a> names are automatically added to this group
+as long as you use the field definition macros.</p>
+
+<p>@return [Set] the field names.</p>
+
+<p>@see field</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-field_names_source')" id="l_method-c-field_names_source">show</a>
+                
+              </p>
+              <div id="method-c-field_names_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/field_group.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">field_names</span>
+  <span class="ruby-ivar">@field_names</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-select">
+            
+              <b>select</b>(name, locator = nil)
+            
+            <a href="../../classes/Dill/FieldGroup.html#method-c-select" name="method-c-select" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Creates a new select accessor.</p>
+
+<p>Adds the following methods to the widget:</p>
+<dl class="rdoc-list note-list"><dt>&lt;name&gt;
+<dd>
+<p>Gets the current selected option. Returns the label of the selected option,
+or <code>nil</code>, if no option is selected.</p>
+</dd><dt>&lt;name&gt;=
+<dd>
+<p>Selects an option on the current select. Pass the label of the option you
+want to select.</p>
+</dd></dl>
+
+<p>@example</p>
+
+<pre><code># Given the following HTML:
+#
+# &lt;form&gt;
+#   &lt;p&gt;
+#     &lt;label for=&quot;selected&quot;&gt;
+#     &lt;select id=&quot;selected&quot;&gt;
+#       &lt;option selected&gt;Selected option&lt;/option&gt;
+#       &lt;option&gt;Another option&lt;/option&gt;
+#     &lt;/select&gt;
+#   &lt;/p&gt;
+#   &lt;p&gt;
+#     &lt;label for=&quot;deselected&quot;&gt;
+#     &lt;select id=&quot;deselected&quot;&gt;
+#       &lt;option&gt;Deselected option&lt;/option&gt;
+#       &lt;option&gt;Another option&lt;/option&gt;
+#     &lt;/select&gt;
+#   &lt;/p&gt;
+# &lt;/form&gt;
+class MyFieldGroup &lt; Dill::FieldGroup
+  root 'form'
+
+  select :selected, 'selected'
+  select :deselected, 'deselected'
+end
+
+form = widget(:my_field_group)
+
+form.selected                         #=&gt; &quot;Selected option&quot;
+form.deselected                       #=&gt; nil
+
+form.deselected = &quot;Deselected option&quot;
+form.unchecked_box                    #=&gt; &quot;Deselected option&quot;
+</code></pre>
+
+<p>@param name the name of the select accessor. @param locator the locator for
+the select. If <code>nil</code> the locator will</p>
+
+<pre><code>be derived from +name+.</code></pre>
+
+<p>@todo Handle select access when the field is disabled (raise an</p>
+
+<pre><code>exception?)</code></pre>
+
+<p>@todo Raise an exception when an option doesn’t exist. @todo Allow passing
+the option value to set an option. @todo Ensure an option with no text
+returns the empty string. @todo What to do when <code>nil</code> is passed
+to the writer?</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-select_source')" id="l_method-c-select_source">show</a>
+                
+              </p>
+              <div id="method-c-select_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/field_group.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">select</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">locator</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">field</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">locator</span>, <span class="ruby-constant">Select</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-text_field">
+            
+              <b>text_field</b>(name, locator = nil)
+            
+            <a href="../../classes/Dill/FieldGroup.html#method-c-text_field" name="method-c-text_field" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Creates a new text field accessor.</p>
+
+<p>Adds the following methods to the widget:</p>
+<dl class="rdoc-list note-list"><dt>&lt;name&gt;
+<dd>
+<p>Returns the current text field value, or <code>nil</code> if no value has
+been set.</p>
+</dd><dt>&lt;name&gt;=
+<dd>
+<p>Sets the current text field value.</p>
+</dd></dl>
+
+<p>@example</p>
+
+<pre><code># Given the following HTML:
+#
+# &lt;form&gt;
+#   &lt;p&gt;
+#     &lt;label for=&quot;text-field&quot;&gt;
+#     &lt;input type=&quot;text&quot; value=&quot;Content&quot; id=&quot;text-field&quot;&gt;
+#   &lt;/p&gt;
+#   &lt;p&gt;
+#     &lt;label for=&quot;empty-field&quot;&gt;
+#     &lt;input type=&quot;text&quot; id=&quot;empty-field&quot;&gt;
+#   &lt;/p&gt;
+# &lt;/form&gt;
+class MyFieldGroup &lt; Dill::FieldGroup
+  root 'form'
+
+  text_field :filled_field, 'text-field'
+  text_field :empty_field, 'empty-field'
+end
+
+form = widget(:my_field_group)
+
+form.filled_field                #=&gt; &quot;Content&quot;
+form.empty_field                 #=&gt; nil
+
+form.empty_field = &quot;Not anymore&quot;
+form.empty_field                 #=&gt; &quot;Not anymore&quot;
+</code></pre>
+
+<p>@param name the name of the text field accessor. @param locator the locator
+for the text field. If <code>nil</code> the locator</p>
+
+<pre><code>will be derived from +name+.</code></pre>
+
+<p>@todo Handle text field access when the field is disabled (raise an</p>
+
+<pre><code>exception?)</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-text_field_source')" id="l_method-c-text_field_source">show</a>
+                
+              </p>
+              <div id="method-c-text_field_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/field_group.rb, line 206</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">text_field</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">locator</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">field</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">locator</span>, <span class="ruby-constant">TextField</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-fields">
+            
+              <b>fields</b>()
+            
+            <a href="../../classes/Dill/FieldGroup.html#method-i-fields" name="method-i-fields" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>@return This field group’s field widgets.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-fields_source')" id="l_method-i-fields_source">show</a>
+                
+              </p>
+              <div id="method-i-fields_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/field_group.rb, line 213</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">fields</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">field_names</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span> <span class="ruby-identifier">widget</span>(<span class="ruby-identifier">name</span>) }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-set">
+            
+              <b>set</b>(attributes)
+            
+            <a href="../../classes/Dill/FieldGroup.html#method-i-set" name="method-i-set" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Sets the given form attributes.</p>
+
+<p>@param attributes [Hash] the attributes and values we want to set.</p>
+
+<p>@return the current widget.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-set_source')" id="l_method-i-set_source">show</a>
+                
+              </p>
+              <div id="method-i-set_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/field_group.rb, line 222</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">set</span>(<span class="ruby-identifier">attributes</span>)
+  <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">send</span> <span class="ruby-node">&quot;#{k}=&quot;</span>, <span class="ruby-identifier">v</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_table">
+            
+              <b>to_table</b>()
+            
+            <a href="../../classes/Dill/FieldGroup.html#method-i-to_table" name="method-i-to_table" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Converts the current field group into a table suitable for diff’ing with
+Cucumber::Ast::Table.</p>
+
+<p><a href="Field.html">Field</a> labels are determined by the widget name.</p>
+
+<p><a href="Field.html">Field</a> values correspond to the return value of
+each field’s <code>to_s</code>.</p>
+
+<p>@return [Array&lt;Array&gt;] the table.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_table_source')" id="l_method-i-to_table_source">show</a>
+                
+              </p>
+              <div id="method-i-to_table_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/dill/widgets/field_group.rb, line 238</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_table</span>
+  <span class="ruby-identifier">headers</span> = <span class="ruby-identifier">fields</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">field</span><span class="ruby-operator">|</span> <span class="ruby-identifier">field</span>.<span class="ruby-identifier">label</span>.<span class="ruby-identifier">downcase</span> }
+  <span class="ruby-identifier">body</span>    = <span class="ruby-identifier">fields</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">field</span><span class="ruby-operator">|</span> <span class="ruby-identifier">field</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span> }
+
+  [<span class="ruby-identifier">headers</span>, <span class="ruby-identifier">body</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    
